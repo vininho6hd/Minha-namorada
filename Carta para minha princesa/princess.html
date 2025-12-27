@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Minha Princesa Lorena</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffd6e7 0%, #ffe6f2 50%, #fff0f7 100%);
+            color: #5a2d46;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #c44569;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #786fa6;
+            font-style: italic;
+        }
+
+        /* Layout principal - carta e imagens lado a lado */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .envelope-section {
+            flex: 1;
+            min-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .envelope {
+            width: 400px;
+            height: 280px;
+            background: #ff9ebb;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.5s ease;
+            margin-bottom: 30px;
+        }
+
+        .envelope:hover {
+            transform: scale(1.02);
+        }
+
+        .flap {
+            width: 0;
+            height: 0;
+            border-left: 200px solid transparent;
+            border-right: 200px solid transparent;
+            border-bottom: 140px solid #ff7ba3;
+            border-top: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: top;
+            transition: transform 0.8s ease;
+            z-index: 2;
+        }
+
+        .flap.open {
+            transform: rotateX(180deg);
+        }
+
+        .envelope-body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ff9ebb;
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Carta que sai para o lado */
+        .letter {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 450px;
+            height: 600px;
+            background: #fff9fc;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+            transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s ease;
+            transform: translateX(-500px) translateY(-50%);
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .letter.open {
+            transform: translateX(420px) translateY(-50%);
+            opacity: 1;
+        }
+
+        .letter-content {
+            height: 100%;
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+
+        .letter-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .letter-content::-webkit-scrollbar-track {
+            background: #ffe6f2;
+            border-radius: 10px;
+        }
+
+        .letter-content::-webkit-scrollbar-thumb {
+            background: #ff9ebb;
+            border-radius: 10px;
+        }
+
+        .letter-content h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #c44569;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .letter-content p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .letter-signature {
+            text-align: right;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #786fa6;
+            margin-top: 40px;
+        }
+
+        /* Instrução para abrir a carta */
+        .instruction {
+            font-style: italic;
+            color: #786fa6;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Área de imagens espalhadas */
+        .images-section {
+            flex: 1.5;
+            min-width: 500px;
+            position: relative;
+            min-height: 600px;
+        }
+
+        .image-container {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+            overflow: hidden;
+            border: 2px solid #ff9ebb;
+            background-color: white;
+        }
+
+        .image-container:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Posicionamento das imagens */
+        #image1 {
+            top: 10px;
+            left: 10px;
+            width: 220px;
+            height: 220px;
+        }
+
+        #image2 {
+            top: 50px;
+            right: 50px;
+            width: 180px;
+            height: 180px;
+        }
+
+        #image3 {
+            bottom: 100px;
+            left: 100px;
+            width: 200px;
+            height: 200px;
+        }
+
+        #image4 {
+            bottom: 30px;
+            right: 30px;
+            width: 190px;
+            height: 190px;
+        }
+
+        #image5 {
+            top: 200px;
+            left: 250px;
+            width: 170px;
+            height: 170px;
+        }
+
+        /* Seção de elogios */
+        .compliments-section {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .compliments-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #c44569;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .compliments-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .compliment {
+            background: linear-gradient(to right, #ff9ebb, #ffb8d0);
+            color: #5a2d46;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .compliment:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Contador de tempo */
+        .counter-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .counter-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #c44569;
+            margin-bottom: 25px;
+        }
+
+        .counter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .time-unit {
+            background: linear-gradient(to bottom, #ff9ebb, #ffb8d0);
+            border-radius: 10px;
+            padding: 15px;
+            min-width: 100px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .time-unit:hover {
+            transform: translateY(-5px);
+        }
+
+        .time-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #5a2d46;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .time-label {
+            font-size: 1rem;
+            color: #786fa6;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .eternity {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #c44569;
+            text-align: center;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+
+        /* Botão de coração */
+        .heart-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: #ff6b8b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 139, 0.4);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .heart-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            background: #ff4757;
+        }
+
+        .heart-btn i {
+            color: white;
+            font-size: 30px;
+        }
+
+        /* Corações flutuantes */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart-emoji {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0;
+            pointer-events: none;
+            animation: float 5s linear forwards;
+        }
+
+        @keyframes float {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #786fa6;
+            font-size: 0.9rem;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 155, 187, 0.3);
+        }
+
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .letter {
+                width: 400px;
+                height: 550px;
+            }
+            
+            .letter.open {
+                transform: translateX(380px) translateY(-50%);
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .main-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .envelope-section, .images-section {
+                min-width: 100%;
+            }
+            
+            .images-section {
+                min-height: 500px;
+            }
+            
+            .letter {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%) scale(0.8);
+                opacity: 0;
+                z-index: 1000;
+                width: 90%;
+                max-width: 500px;
+                max-height: 80vh;
+            }
+            
+            .letter.open {
+                transform: translateX(-50%) translateY(-50%) scale(1);
+                opacity: 1;
+            }
+            
+            .envelope-section {
+                margin-bottom: 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .envelope {
+                width: 320px;
+                height: 230px;
+            }
+            
+            .flap {
+                border-left: 160px solid transparent;
+                border-right: 160px solid transparent;
+                border-bottom: 115px solid #ff7ba3;
+            }
+            
+            .letter {
+                padding: 25px;
+                height: 500px;
+            }
+            
+            .letter-content h2 {
+                font-size: 2rem;
+            }
+            
+            .letter-content p {
+                font-size: 1rem;
+            }
+            
+            .images-section {
+                min-height: 400px;
+            }
+            
+            .image-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            #image1, #image2, #image3, #image4, #image5 {
+                position: relative;
+                top: auto;
+                left: auto;
+                right: auto;
+                bottom: auto;
+                margin: 10px;
+                display: inline-block;
+            }
+            
+            .time-unit {
+                min-width: 80px;
+                padding: 10px;
+            }
+            
+            .time-value {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .envelope {
+                width: 280px;
+                height: 200px;
+            }
+            
+            .flap {
+                border-left: 140px solid transparent;
+                border-right: 140px solid transparent;
+                border-bottom: 100px solid #ff7ba3;
+            }
+            
+            .letter {
+                width: 95%;
+                height: 450px;
+                padding: 20px;
+            }
+            
+            .image-container {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .counter {
+                gap: 8px;
+            }
+            
+            .time-unit {
+                min-width: 70px;
+                padding: 8px;
+            }
+            
+            .time-value {
+                font-size: 1.8rem;
+            }
+            
+            .eternity {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container" id="hearts-container"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Para Minha Princesa Lorena</h1>
+            <p class="subtitle">Uma surpresa especial do seu Vini, com todo meu amor ❤️</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="envelope-section">
+                <div class="envelope" id="envelope">
+                    <div class="flap" id="flap"></div>
+                    <div class="envelope-body"></div>
+                </div>
+                <div class="letter" id="letter">
+                    <div class="letter-content">
+                        <h2>Cara Princesa e dona do meu coração,</h2>
+                        <p>Meu amor, não sei por onde começar a expressar o quanto você significa para mim. Estamos completando quase três meses juntos e cada dia que passa tendo voce como minha namorada tem sido os melhores da minha vida.</p>
+                        <p>Não sabe como sou feliz de ter você e ser todo seu. Seu sorriso ilumina meus dias, seus olhos são o meu lugar favorito no mundo, suas sardinhas são constelações que contam a história da pessoa mais incrível que já conheci.</p>
+                        <p>Eu te amo mais do que as palavras podem dizer. Mal posso esperar para ter nosso abajur de capivara juntos e construir todo o restante de nossas vidas lado a lado, compartilhando sonhos, conquistas e o amor mais puro que eu posso dar a você.</p>
+                        <p>Prometo cuidar de você, respeitá-la e amá-la todos os dias da minha vida. Você é minha eterna princesa, minha dama, minha axolote, minha pulga, meu amor da minha vida.</p>
+                        <p>Com todo meu amor, agora e para sempre,</p>
+                        <div class="letter-signature">
+                            De seu namorado e futuro esposo Vini<br>
+                            Para sua namorada e futura esposa Lorena
+                        </div>
+                    </div>
+                </div>
+                <p class="instruction">Clique no envelope para abrir a carta especial</p>
+            </div>
+            
+            <div class="images-section">
+                <!-- 
+                    PARA ADICIONAR SUAS IMAGENS:
+                    
+                    1. Coloque suas imagens na mesma pasta que este arquivo HTML
+                    2. Altere os nomes dos arquivos abaixo para os nomes reais das suas fotos
+                    3. Se quiser imagens de URL online, use: src="https://exemplo.com/sua-foto.jpg"
+                -->
+                <div class="image-container" id="image1">
+                    <img src="primeira.jpeg" alt="Nossa foto 1">
+                </div>
+                
+                <div class="image-container" id="image2">
+                    <img src="Claudete.jpeg" alt="Nossa foto 2">
+                </div>
+                
+                <div class="image-container" id="image3">
+                    <img src="Linda.jpeg" alt="Nossa foto 3">
+                </div>
+                
+                <div class="image-container" id="image4">
+                    <img src="lick.jpeg" alt="Nossa foto 4">
+                </div>
+                
+                <div class="image-container" id="image5">
+                    <img src="Pulso.jpeg" alt="Nossa foto 5">
+                </div>
+            </div>
+        </div>
+        
+        <div class="counter-section">
+            <h2 class="counter-title">Nosso Tempo Juntos ❤️</h2>
+            <div class="counter" id="counter">
+                <div class="time-unit">
+                    <div class="time-value" id="months">0</div>
+                    <div class="time-label">Meses</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="weeks">0</div>
+                    <div class="time-label">Semanas</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="days">0</div>
+                    <div class="time-label">Dias</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="hours">0</div>
+                    <div class="time-label">Horas</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="minutes">0</div>
+                    <div class="time-label">Minutos</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="seconds">0</div>
+                    <div class="time-label">Segundos</div>
+                </div>
+            </div>
+            <div class="eternity" id="eternity-text">Até a eternidade juntos ❤️</div>
+        </div>
+        
+        <div class="compliments-section">
+            <h2 class="compliments-title">Tudo que Amo em Você</h2>
+            <div class="compliments-container" id="compliments-container">
+                <!-- Os elogios serão inseridos via JavaScript -->
+            </div>
+        </div>
+        
+        <footer>
+            <p>Feito com ❤️ por Vini para sua eterna princesa Lorena</p>
+            <p>Desde 15 de outubro de 2025 às 14:00 - O início da nossa felicidade</p>
+        </footer>
+    </div>
+    
+    <div class="heart-btn" id="heart-btn">
+        <i class="fas fa-heart"></i>
+    </div>
+
+    <script>
+        // Data de início do relacionamento: 15 de outubro de 2025 às 14:00
+        const startDate = new Date('October 13, 2025 14:00:00');
+        
+        // Elementos do DOM
+        const envelope = document.getElementById('envelope');
+        const flap = document.getElementById('flap');
+        const letter = document.getElementById('letter');
+        const heartBtn = document.getElementById('heart-btn');
+        const heartsContainer = document.getElementById('hearts-container');
+        const complimentsContainer = document.getElementById('compliments-container');
+        
+        // Array de elogios (sem "bruxinha")
+        const compliments = [
+            "Minha princesa", "Minha dama", "Minha axolote", "Minha pulga", 
+            "Meu amor da minha vida", "Seu sorriso ilumina meu dia", "Seus olhos são estrelas",
+            "Suas sardas são constelações", "Seu abraço é meu lugar favorito", 
+            "Sua voz é minha melodia", "Seu cheiro é meu perfume favorito",
+            "Sua inteligência me inspira", "Seu coração é puro ouro", 
+            "Você é a razão do meu sorriso", "Meu maior presente", "Minha alma gêmea",
+            "Minha melhor amiga", "Minha parceira de vida", "Minha inspiração diária",
+            "Meu porto seguro", "Minha razão de viver", "Meu maior amor",
+            "Meu sol", "Minha lua", "Minha estrela", "Minha rainha",
+            "Minha fada", "Minha coelhinha", "Minha gatinha", "Meu tesouro",
+            "Minha vida", "Meu tudo", "Minha paz", "Minha alegria", "Linda",
+            "Maravilhosa","Fofa","Gostosa","Perfeita","Minha namorada", "Minha futura esposa",
+        ];
+        
+        // Array de emojis de coração
+        const heartEmojis = ['❤️', '🧡', '💛', 'V+F', '💙', '💜', '🖤', '🤍', '🤎', '💖', '💗', '💓', '💞', '💕', 'Eu te amo'];
+        
+        // Estado do envelope
+        let isEnvelopeOpen = false;
+        
+        // Função para calcular o tempo juntos CORRETAMENTE
+        function calculateTimeTogether() {
+            const now = new Date();
+            
+            // Calcular a diferença total em milissegundos
+            const diffMs = now - startDate;
+            
+            // Calcular segundos totais
+            const totalSeconds = Math.floor(diffMs / 1000);
+            
+            // Calcular minutos totais
+            const totalMinutes = Math.floor(totalSeconds / 60);
+            
+            // Calcular horas totais
+            const totalHours = Math.floor(totalMinutes / 60);
+            
+            // Calcular dias totais
+            const totalDays = Math.floor(totalHours / 24);
+            
+            // Calcular meses totais (considerando 30.44 dias por mês em média)
+            const totalMonths = Math.floor(totalDays / 30.44);
+            
+            // Calcular semanas totais
+            const totalWeeks = Math.floor(totalDays / 7);
+            
+            // Agora calcular os valores para exibir (o que sobra após remover as unidades maiores)
+            const months = totalMonths;
+            const weeks = Math.floor((totalDays % 30.44) / 7); // semanas restantes após meses completos
+            const days = Math.floor(totalDays % 7); // dias restantes após semanas completas
+            const hours = totalHours % 24; // horas restantes após dias completos
+            const minutes = totalMinutes % 60; // minutos restantes após horas completas
+            const seconds = totalSeconds % 60; // segundos restantes após minutos completos
+            
+            return {
+                months,
+                weeks,
+                days,
+                hours,
+                minutes,
+                seconds
+            };
+        }
+        
+        // Função para abrir/fechar a carta
+        function toggleEnvelope() {
+            if (!isEnvelopeOpen) {
+                // Abrir envelope e carta
+                flap.classList.add('open');
+                setTimeout(() => {
+                    letter.classList.add('open');
+                }, 500);
+                isEnvelopeOpen = true;
+                
+                // Adicionar alguns corações quando abrir a carta
+                setTimeout(() => {
+                    createHearts(8);
+                }, 800);
+                
+                // Mudar instrução
+                document.querySelector('.instruction').textContent = "Clique na carta para fechá-la";
+            } else {
+                // Fechar carta e envelope
+                letter.classList.remove('open');
+                setTimeout(() => {
+                    flap.classList.remove('open');
+                }, 500);
+                isEnvelopeOpen = false;
+                
+                // Voltar instrução original
+                document.querySelector('.instruction').textContent = "Clique no envelope para abrir a carta especial";
+            }
+        }
+        
+        // Função para criar corações flutuantes
+        function createHearts(count) {
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-emoji');
+                heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                
+                // Posição aleatória na parte inferior da tela
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = '100vh';
+                
+                // Tamanho aleatório
+                const size = Math.random() * 30 + 20;
+                heart.style.fontSize = size + 'px';
+                
+                // Duração da animação aleatória
+                const duration = Math.random() * 3 + 4;
+                heart.style.animationDuration = duration + 's';
+                
+                // Atraso aleatório
+                const delay = Math.random() * 2;
+                heart.style.animationDelay = delay + 's';
+                
+                heartsContainer.appendChild(heart);
+                
+                // Remover o coração após a animação
+                setTimeout(() => {
+                    heart.remove();
+                }, (duration + delay) * 1000);
+            }
+        }
+        
+        // Função para adicionar elogios à página
+        function populateCompliments() {
+            // Embaralhar os elogios
+            const shuffledCompliments = [...compliments].sort(() => Math.random() - 0.5);
+            
+            shuffledCompliments.forEach(compliment => {
+                const complimentElement = document.createElement('div');
+                complimentElement.classList.add('compliment');
+                complimentElement.textContent = compliment;
+                complimentsContainer.appendChild(complimentElement);
+            });
+        }
+        
+        // Função para atualizar o contador de tempo juntos
+        function updateCounter() {
+            const time = calculateTimeTogether();
+            
+            // Atualizar elementos DOM
+            document.getElementById('months').textContent = time.months.toString().padStart(2, '0');
+            document.getElementById('weeks').textContent = time.weeks.toString().padStart(2, '0');
+            document.getElementById('days').textContent = time.days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = time.hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = time.minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = time.seconds.toString().padStart(2, '0');
+            
+            // Atualizar frase da eternidade com base no tempo
+            const eternityText = document.getElementById('eternity-text');
+            if (time.months >= 12) {
+                const years = Math.floor(time.months / 12);
+                const remainingMonths = time.months % 12;
+                eternityText.innerHTML = `${years} ano${years > 1 ? 's' : ''} e ${remainingMonths} mês${remainingMonths > 1 ? 'es' : ''} juntos ❤️`;
+            } else if (time.months > 0) {
+                eternityText.innerHTML = `${time.months} mês${time.months > 1 ? 'es' : ''} e ${time.weeks} semana${time.weeks > 1 ? 's' : ''} juntos ❤️`;
+            } else if (time.weeks > 0) {
+                eternityText.innerHTML = `${time.weeks} semana${time.weeks > 1 ? 's' : ''} e ${time.days} dia${time.days > 1 ? 's' : ''} juntos ❤️`;
+            } else if (time.days > 0) {
+                eternityText.innerHTML = `${time.days} dia${time.days > 1 ? 's' : ''} e ${time.hours} hora${time.hours > 1 ? 's' : ''} juntos ❤️`;
+            }
+        }
+        
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            // Adicionar elogios
+            populateCompliments();
+            
+            // Atualizar contador imediatamente e a cada segundo
+            updateCounter();
+            setInterval(updateCounter, 1000);
+            
+            // Evento para abrir/fechar envelope
+            envelope.addEventListener('click', toggleEnvelope);
+            
+            // Evento para fechar a carta quando clicar nela
+            letter.addEventListener('click', (e) => {
+                // Só fecha se não estiver clicando no conteúdo
+                if (e.target === letter || e.target.classList.contains('letter-content')) {
+                    toggleEnvelope();
+                }
+            });
+            
+            // Evento para botão de coração
+            heartBtn.addEventListener('click', () => {
+                createHearts(15);
+            });
+            
+            // Criar alguns corações iniciais
+            setTimeout(() => {
+                createHearts(5);
+            }, 1000);
+            
+            // Criar corações periodicamente
+            setInterval(() => {
+                createHearts(2);
+            }, 8000);
+            
+            // Adicionar evento para as imagens quando hover
+            const images = document.querySelectorAll('.image-container');
+            images.forEach(img => {
+                img.addEventListener('mouseenter', () => {
+                    createHearts(1);
+                });
+                
+                // Efeito de clique nas imagens
+                img.addEventListener('click', () => {
+                    createHearts(3);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
