@@ -1,0 +1,2610 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vini + Lorena | 1 ano do nosso amor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* VARIÁVEIS CSS */
+        :root {
+            --primary-color: #ff6b8b;
+            --secondary-color: #c44569;
+            --accent-color: #786fa6;
+            --light-pink: #ffd6e7;
+            --medium-pink: #ff9ebb;
+            --dark-pink: #ff7ba3;
+            --white: #fff9fc;
+            --text-dark: #5a2d46;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* RESET E CONFIGURAÇÕES GERAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--light-pink) 0%, #ffe6f2 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            padding-bottom: 80px;
+        }
+
+        /* CORAÇÕES FLUTUANTES - SEMPRE NO TOPO */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        .heart-emoji {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0;
+            pointer-events: none;
+            animation: float 5s linear forwards;
+            filter: drop-shadow(0 0 3px rgba(255, 107, 139, 0.5));
+            z-index: 10000;
+        }
+
+        @keyframes float {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg) scale(0.5);
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(-20px) rotate(10deg) scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) rotate(360deg) scale(1.2);
+            }
+        }
+
+        /* CONFETTI */
+        .confetti {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: var(--primary-color);
+            top: -20px;
+            z-index: 9999;
+            animation: confettiFall 5s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HEADER MOBILE-FRIENDLY */
+        header {
+            text-align: center;
+            padding: 25px 15px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid var(--medium-pink);
+            backdrop-filter: blur(10px);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: var(--secondary-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            line-height: 1.2;
+            word-wrap: break-word;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-style: italic;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .love-date {
+            font-size: 1rem;
+            color: var(--text-dark);
+            background: rgba(255, 155, 187, 0.2);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        /* SEÇÃO PRINCIPAL - CARTA */
+        .envelope-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 3px solid var(--medium-pink);
+            text-align: center;
+        }
+
+        .envelope {
+            width: 280px;
+            height: 200px;
+            background: linear-gradient(145deg, var(--medium-pink), var(--dark-pink));
+            position: relative;
+            border-radius: 15px;
+            margin: 0 auto 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .envelope:hover {
+            transform: translateY(-5px);
+        }
+
+        .envelope i {
+            font-size: 3.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .instruction {
+            font-style: italic;
+            color: var(--accent-color);
+            margin-top: 15px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        /* MODAL DA CARTA */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10001;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border: 5px solid var(--medium-pink);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .modal-close:hover {
+            color: var(--primary-color);
+            transform: rotate(90deg);
+        }
+
+        .letter-content h2 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--secondary-color);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px double var(--medium-pink);
+            padding-bottom: 15px;
+        }
+
+        .letter-content p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            text-align: justify;
+            padding: 10px;
+            background: rgba(255, 155, 187, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .letter-signature {
+            text-align: right;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--medium-pink);
+        }
+
+        /* GALERIA DE FOTOS - MOBILE FIRST */
+        .gallery-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 3px solid var(--medium-pink);
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .photo-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            aspect-ratio: 4 / 5;
+            border: 2px solid transparent;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 15px 10px 10px;
+            font-size: 0.9rem;
+        }
+
+        .photo-overlay strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        /* BOTÕES ESTILIZADOS */
+        .btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 500;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px auto;
+            touch-action: manipulation;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--accent-color), #8e44ad);
+        }
+
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            max-width: 200px;
+        }
+
+        /* CONTADOR DE TEMPO */
+        .counter-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 3px solid var(--medium-pink);
+            text-align: center;
+        }
+
+        .counter {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .time-unit {
+            background: linear-gradient(145deg, white, #f9f9f9);
+            border-radius: 15px;
+            padding: 15px 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .time-unit:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .time-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            margin-bottom: 5px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .eternity {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--secondary-color);
+            text-align: center;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+            padding: 15px;
+            background: rgba(255, 155, 187, 0.1);
+            border-radius: 15px;
+            border: 2px dashed var(--medium-pink);
+            line-height: 1.3;
+        }
+
+        /* ELOGIOS */
+        .compliments-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 3px solid var(--medium-pink);
+        }
+
+        .compliments-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .compliment {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+            font-weight: 500;
+        }
+
+        .compliment:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border-color: white;
+        }
+
+        /* LINHA DO TEMPO EDITÁVEL */
+        .timeline-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 3px solid var(--medium-pink);
+        }
+
+        .timeline {
+            margin-top: 20px;
+        }
+
+        .timeline-item {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+        }
+
+        .timeline-date {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .timeline-date i {
+            color: var(--primary-color);
+        }
+
+        .timeline-title {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* QUIZ EDITÁVEL */
+        .quiz-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 3px solid var(--medium-pink);
+        }
+
+        .quiz-container {
+            margin-top: 20px;
+        }
+
+        .quiz-progress {
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .quiz-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 4px;
+        }
+
+        .quiz-question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--secondary-color);
+            line-height: 1.4;
+            padding: 0 10px;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            background: white;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--primary-color);
+            background: rgba(255, 107, 139, 0.1);
+        }
+
+        .quiz-result {
+            display: none;
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, var(--light-pink), white);
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .quiz-score {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 15px 0;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* ADMIN PANEL */
+        .admin-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .admin-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2ecc71, #1abc9c);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            touch-action: manipulation;
+        }
+
+        .admin-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        .admin-menu {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: none;
+            min-width: 250px;
+            border: 3px solid var(--medium-pink);
+        }
+
+        .admin-menu.active {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .admin-menu h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .admin-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: rgba(255, 155, 187, 0.1);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .admin-option:hover {
+            background: rgba(255, 107, 139, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .admin-option i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            width: 30px;
+        }
+
+        /* FORMULÁRIOS DE EDIÇÃO */
+        .edit-form {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+            border: 2px solid var(--medium-pink);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-cancel {
+            background: #e0e0e0;
+            color: #666;
+        }
+
+        .btn-delete {
+            background: #ff4757;
+            color: white;
+        }
+
+        /* FOOTER MOBILE */
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: var(--accent-color);
+            font-size: 0.95rem;
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px 20px 0 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 998;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .footer-btn:hover {
+            transform: translateY(-3px);
+            background: var(--secondary-color);
+        }
+
+        /* LOADER */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 10002;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid var(--light-pink);
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* NOTIFICAÇÃO */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            left: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left: 5px solid var(--primary-color);
+            z-index: 10001;
+            transform: translateY(-100px);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+        }
+
+        .notification-title {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        /* ESPECIAL DE 1 ANO + BRINCADEIRAS */
+        .anniversary-section, .play-section, .capsule-section {
+            background: rgba(255,255,255,.96); border-radius: 20px; padding: 25px 20px;
+            margin-bottom: 25px; box-shadow: var(--shadow); border: 3px solid var(--medium-pink);
+        }
+        .anniversary-section {
+            background: radial-gradient(circle at top, rgba(255,214,231,.9), rgba(255,255,255,.98) 60%);
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .anniversary-badge {
+            display: inline-block; padding: 8px 16px; border-radius: 999px; color: white;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            font-weight: 600; letter-spacing: 2px; margin-bottom: 12px;
+        }
+        .anniversary-lead { color: var(--accent-color); max-width: 720px; margin: 0 auto 20px; }
+        .anniversary-countdown { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin: 18px auto; max-width: 650px; }
+        .anniversary-countdown div { background: white; border-radius: 16px; padding: 15px 8px; box-shadow: var(--shadow); border: 1px solid rgba(255,107,139,.25); }
+        .anniversary-countdown span { display:block; font-family:'Dancing Script',cursive; font-size:2.1rem; color:var(--secondary-color); font-weight:700; }
+        .anniversary-countdown small { color:var(--accent-color); text-transform:uppercase; letter-spacing:1px; }
+        .anniversary-message { margin: 18px auto 0; padding: 16px; max-width: 760px; border-radius: 16px; background: rgba(255,107,139,.08); line-height:1.6; }
+        .love-lab-grid { display:grid; grid-template-columns:1fr; gap:16px; }
+        .love-card { background:linear-gradient(145deg,#fff,#fff6fa); border:1px solid rgba(255,107,139,.22); border-radius:18px; padding:22px; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,.07); min-height:250px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+        .love-card h3 { color:var(--secondary-color); margin:8px 0 10px; }
+        .love-card p { line-height:1.55; margin-bottom:12px; }
+        .love-card-icon { font-size:2.3rem; }
+        .choice-buttons { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; min-height:60px; }
+        .btn-no { background:linear-gradient(135deg,#8b8b98,#5f5f6b); transition:transform .18s ease; }
+        .capsule { max-width:780px; margin:0 auto; text-align:center; background:rgba(120,111,166,.08); border:2px dashed var(--accent-color); border-radius:18px; padding:22px; }
+        .capsule p { line-height:1.7; }
+        .capsule-secret { margin-top:18px; background:white; border-radius:14px; padding:18px; line-height:1.65; border-left:4px solid var(--primary-color); }
+        .capsule-reveal { animation:fadeInUp .6s ease; }
+        @media (min-width: 768px) { .love-lab-grid { grid-template-columns:repeat(3,1fr); } }
+
+        /* RESPONSIVIDADE */
+        @media (min-width: 768px) {
+            .container {
+                padding: 25px;
+                max-width: 1200px;
+            }
+            
+            .photo-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            
+            .counter {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 15px;
+            }
+            
+            .time-unit {
+                padding: 20px 15px;
+            }
+            
+            .time-value {
+                font-size: 2.5rem;
+            }
+            
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .photo-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .modal-content {
+                padding: 30px;
+            }
+            
+            .letter-content h2 {
+                font-size: 2.5rem;
+            }
+            
+            .letter-content p {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* UTILITIES */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* SCROLLBAR PERSONALIZADA */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 155, 187, 0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+        }
+
+        /* ANIMAÇÃO DE ENTRADA */
+        .fade-in {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- LOADER -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p style="color: var(--secondary-color); font-size: 1.1rem;">Carregando nosso amor... ❤️</p>
+    </div>
+
+    <!-- NOTIFICAÇÃO -->
+    <div class="notification" id="notification">
+        <div class="notification-title" id="notificationTitle">Olá Minha axolote fofa!</div>
+        <div class="notification-message" id="notificationMessage">Bem-vinda ao nosso mundinho especial que fiz para você</div>
+    </div>
+
+    <!-- MODAL DA CARTA -->
+    <div class="modal" id="letterModal">
+        <div class="modal-content">
+            <div class="modal-close" id="modalClose">&times;</div>
+            <div class="letter-content" id="letterContent">
+                <!-- Conteúdo será carregado via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE EDIÇÃO -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-close" id="editModalClose">&times;</div>
+            <div id="editContent">
+                <!-- Conteúdo do formulário será inserido aqui -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CORAÇÕES E CONFETTI -->
+    <div class="hearts-container" id="heartsContainer"></div>
+    <div id="confettiContainer"></div>
+
+    <!-- PAINEL DE ADMINISTRAÇÃO -->
+    <div class="admin-panel">
+        <div class="admin-menu" id="adminMenu">
+            <h3><i class="fas fa-cog"></i> Editar Nosso Site</h3>
+            <div class="admin-option" onclick="openEditForm('photos')">
+                <i class="fas fa-images"></i>
+                <span>Editar Fotos</span>
+            </div>
+            <div class="admin-option" onclick="openEditForm('timeline')">
+                <i class="fas fa-history"></i>
+                <span>Editar Linha do Tempo</span>
+            </div>
+            <div class="admin-option" onclick="openEditForm('quiz')">
+                <i class="fas fa-question-circle"></i>
+                <span>Editar Quiz</span>
+            </div>
+            <div class="admin-option" onclick="openEditForm('compliments')">
+                <i class="fas fa-heart"></i>
+                <span>Editar Elogios</span>
+            </div>
+            <div class="admin-option" onclick="openEditForm('letter')">
+                <i class="fas fa-envelope"></i>
+                <span>Editar Carta</span>
+            </div>
+            <div class="admin-option" onclick="saveAllData()">
+                <i class="fas fa-save"></i>
+                <span>Salvar Tudo</span>
+            </div>
+        </div>
+        <button class="admin-btn" id="adminBtn">
+            <i class="fas fa-edit"></i>
+        </button>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="container">
+        <!-- HEADER -->
+        <header class="fade-in">
+            <h1>Vini + Lorena: 1 ano do nosso universo</h1>
+            <p class="subtitle">A atualização de 1 ano do nosso mundinho. Mais memórias, mais brincadeiras e a mesma certeza: eu escolheria você de novo. ❤️</p>
+            <div class="love-date">Desde 15 de Outubro de 2025 às 15:00</div>
+            <p style="margin-top: 15px; font-size: 1.05rem; color: var(--accent-color);">Da pessoa que ainda fica boba por você: seu Vini ❤️</p>
+        </header>
+
+        <!-- CARTA DE AMOR -->
+        <section class="envelope-section fade-in">
+            <h2 class="section-title">Minha Carta para Você</h2>
+            <div class="envelope" id="envelope">
+                <i class="fas fa-heart"></i>
+            </div>
+            <p class="instruction">Toque no coração para ler a carta de amor</p>
+            <button class="btn" onclick="openLetterModal()">
+                <i class="fas fa-envelope-open-text"></i> Ler Carta Completa
+            </button>
+        </section>
+
+        <!-- GALERIA DE FOTOS -->
+        <section class="gallery-section fade-in">
+            <h2 class="section-title">Nossos Momentos</h2>
+            <p class="text-center mb-20" style="color: var(--accent-color);">Toque nas fotos para ver em detalhes</p>
+            
+            <div class="photo-grid" id="photoGrid">
+                <!-- Fotos serão carregadas via JavaScript -->
+            </div>
+            
+
+        </section>
+
+        <!-- CONTADOR DE TEMPO -->
+        <section class="counter-section fade-in">
+            <h2 class="section-title">Nosso Tempo Juntos</h2>
+            <p class="text-center mb-20" style="color: var(--accent-color);">Cada segundo ao seu lado é precioso</p>
+            
+            <div class="counter" id="counter">
+                <div class="time-unit">
+                    <div class="time-value" id="years">0</div>
+                    <div class="time-label">Anos</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="months">0</div>
+                    <div class="time-label">Meses</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="days">0</div>
+                    <div class="time-label">Dias</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="hours">0</div>
+                    <div class="time-label">Horas</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="minutes">0</div>
+                    <div class="time-label">Minutos</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="seconds">0</div>
+                    <div class="time-label">Segundos</div>
+                </div>
+            </div>
+            
+            <div class="eternity" id="eternityText">Começo da nossa eternidade ❤️</div>
+        </section>
+
+        <!-- ESPECIAL DE 1 ANO -->
+        <section class="anniversary-section fade-in">
+            <div class="anniversary-badge">15 • 10 • 2026</div>
+            <h2 class="section-title">Operação: 1 Ano de Nós</h2>
+            <p class="text-center anniversary-lead">A contagem regressiva para o nosso primeiro ano oficial. Quando zerar, este cartão vira comemoração. 🎉</p>
+            <div class="anniversary-countdown" id="anniversaryCountdown">
+                <div><span id="aDays">00</span><small>dias</small></div>
+                <div><span id="aHours">00</span><small>horas</small></div>
+                <div><span id="aMinutes">00</span><small>min</small></div>
+                <div><span id="aSeconds">00</span><small>seg</small></div>
+            </div>
+            <div class="anniversary-message" id="anniversaryMessage">Quase 1 ano de uma coincidência estatisticamente absurda e maravilhosa: nós dois. ❤️</div>
+        </section>
+
+        <!-- BRINCADEIRAS -->
+        <section class="play-section fade-in">
+            <h2 class="section-title">Laboratório do Nosso Amor</h2>
+            <p class="text-center mb-20" style="color: var(--accent-color);">Experimentos rigorosamente científicos. Fonte: meu coração, revisado por pares imaginários. 🧪💗</p>
+            <div class="love-lab-grid">
+                <article class="love-card">
+                    <div class="love-card-icon">💌</div>
+                    <h3>Mensagem surpresa</h3>
+                    <p id="randomLoveText">Aperta e eu te entrego uma pequena dose de Vini apaixonado.</p>
+                    <button class="btn btn-small" onclick="randomLoveMessage()">Sortear carinho</button>
+                </article>
+                <article class="love-card">
+                    <div class="love-card-icon">🎡</div>
+                    <h3>Roleta de date</h3>
+                    <p id="dateIdeaText">Quando bater a indecisão, a roleta decide por nós.</p>
+                    <button class="btn btn-small" onclick="randomDateIdea()">Girar roleta</button>
+                </article>
+                <article class="love-card choice-card" id="choiceCard">
+                    <div class="love-card-icon">💍</div>
+                    <h3>Escolheria eu de novo?</h3>
+                    <p>Questão extremamente imparcial, sem qualquer pressão emocional ou suborno por beijinhos.</p>
+                    <div class="choice-buttons">
+                        <button class="btn btn-small" onclick="chooseMeAgain()">Sim, óbvio ❤️</button>
+                        <button class="btn btn-small btn-no" id="noButton">Não 😶</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CÁPSULA -->
+        <section class="capsule-section fade-in">
+            <h2 class="section-title">Cápsula de 1 Ano</h2>
+            <div class="capsule">
+                <p>Um ano depois, eu ainda quero conhecer cada nova versão sua. A Lorena de amanhã, do ano que vem, dos planos malucos, das conquistas, dos dias difíceis e dos dias em que a gente ri de absolutamente nada.</p>
+                <button class="btn" onclick="openCapsule()"><i class="fas fa-lock-open"></i> Abrir a cápsula secreta</button>
+                <div class="capsule-secret hidden" id="capsuleSecret">
+                    <strong>Contrato vitalício não jurídico:</strong> continuar te escolhendo, te perturbando, te admirando e construindo memórias com você. Renovação automática a cada beijo. ❤️
+                </div>
+            </div>
+        </section>
+
+        <!-- LINHA DO TEMPO -->
+        <section class="timeline-section fade-in">
+            <h2 class="section-title">Nossa História</h2>
+            <p class="text-center mb-20" style="color: var(--accent-color);">Momentos especiais que vivemos juntos</p>
+            
+            <div class="timeline" id="timeline">
+                <!-- Momentos serão carregados via JavaScript -->
+            </div>
+            
+
+        </section>
+
+        <!-- QUIZ DO AMOR -->
+        <section class="quiz-section fade-in">
+            <h2 class="section-title">Quiz do Nosso Amor</h2>
+            <p class="text-center mb-20" style="color: var(--accent-color);">Quiz que fiz para nós dois jogarmos ❤️</p>
+            
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="quizProgressBar"></div>
+                </div>
+                
+                <div class="quiz-question" id="quizQuestion">
+                    Toque no botão abaixo para começar o quiz!
+                </div>
+                
+                <div class="quiz-options" id="quizOptions">
+                    <!-- Opções serão carregadas via JavaScript -->
+                </div>
+                
+                <button class="btn" id="startQuizBtn" onclick="startQuiz()">
+                    <i class="fas fa-play"></i> Começar Quiz
+                </button>
+                
+                <div class="quiz-result" id="quizResult">
+                    <h3 style="color: var(--secondary-color);">Resultado do Quiz</h3>
+                    <div class="quiz-score" id="quizScore">0/0</div>
+                    <div id="quizMessage" style="color: var(--text-dark); margin: 15px 0;"></div>
+                    <button class="btn btn-small" onclick="restartQuiz()">
+                        <i class="fas fa-redo"></i> Jogar Novamente
+                    </button>
+                </div>
+            </div>
+            
+
+        </section>
+
+        <!-- ELOGIOS -->
+        <section class="compliments-section fade-in">
+            <h2 class="section-title">Tudo que Amo em Você</h2>
+            <p class="text-center mb-20" style="color: var(--accent-color);">Cada detalhe que faz você ser especial</p>
+            
+            <div class="compliments-container" id="complimentsContainer">
+                <!-- Elogios serão carregados via JavaScript -->
+            </div>
+            
+
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Feito com ❤️, CSS e uma quantidade preocupante de saudade por <strong>Vini</strong> para <strong>Lorena</strong></p>
+        <p style="font-size: 0.9rem; margin-top: 5px; color: var(--accent-color);">
+            Amor crescente: <span id="liveLoveCounter">0 dias</span>
+        </p>
+        
+        <div class="footer-buttons">
+            <button class="footer-btn" onclick="createHearts(15)">
+                <i class="fas fa-heart"></i> 15 Corações
+            </button>
+            <button class="footer-btn" onclick="launchConfetti(30)">
+                <i class="fas fa-birthday-cake"></i> Chuva de 1 ano
+            </button>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // ====================== CONFIGURAÇÕES ======================
+        const CONFIG = {
+            startDate: new Date(2025, 9, 15, 15, 0, 0),
+            anniversaryDate: new Date(2026, 9, 15, 15, 0, 0),
+            storageKey: 'lorenaLoveSiteDataV2_1ano'
+        };
+
+        // ====================== ELEMENTOS DO DOM ======================
+        const elements = {
+            loader: document.getElementById('loader'),
+            notification: document.getElementById('notification'),
+            notificationTitle: document.getElementById('notificationTitle'),
+            notificationMessage: document.getElementById('notificationMessage'),
+            
+            // Modais
+            letterModal: document.getElementById('letterModal'),
+            editModal: document.getElementById('editModal'),
+            modalClose: document.getElementById('modalClose'),
+            editModalClose: document.getElementById('editModalClose'),
+            letterContent: document.getElementById('letterContent'),
+            editContent: document.getElementById('editContent'),
+            
+            // Efeitos
+            heartsContainer: document.getElementById('heartsContainer'),
+            confettiContainer: document.getElementById('confettiContainer'),
+            
+            // Admin
+            adminBtn: document.getElementById('adminBtn'),
+            adminMenu: document.getElementById('adminMenu'),
+            
+            // Galeria
+            photoGrid: document.getElementById('photoGrid'),
+            
+            // Contador
+            eternityText: document.getElementById('eternityText'),
+            liveLoveCounter: document.getElementById('liveLoveCounter'),
+            
+            // Linha do tempo
+            timeline: document.getElementById('timeline'),
+            
+            // Quiz
+            quizContainer: document.getElementById('quizContainer'),
+            quizProgressBar: document.getElementById('quizProgressBar'),
+            quizQuestion: document.getElementById('quizQuestion'),
+            quizOptions: document.getElementById('quizOptions'),
+            startQuizBtn: document.getElementById('startQuizBtn'),
+            quizResult: document.getElementById('quizResult'),
+            quizScore: document.getElementById('quizScore'),
+            
+            // Elogios
+            complimentsContainer: document.getElementById('complimentsContainer')
+        };
+
+        // ====================== DADOS INICIAIS ======================
+        let siteData = {
+            photos: [
+                {id: 1, src: 'primeira.jpeg', title: 'Onde tudo começou', description: 'A primeira página do nosso capítulo favorito ❤️', date: '15/10/2025'},
+                {id: 2, src: 'nos-dois-sol.jpg', title: 'Nós, do nosso jeitinho', description: 'Dois sorrisos e uma paz que eu reconheço de longe.', date: '2026'},
+                {id: 3, src: 'beijinho.jpg', title: 'Ataque surpresa', description: 'Evidência fotográfica de que eu aceito este tipo de agressão carinhosa.', date: '2026'},
+                {id: 4, src: 'selfie-amor.jpg', title: 'Cabe nós dois em qualquer lugar', description: 'Até uma foto simples vira memória quando é com você.', date: '2026'},
+                {id: 5, src: 'maos.jpg', title: 'Minha mão favorita', description: 'Se for para atravessar o tempo, eu vou assim: segurando você.', date: '2026'},
+                {id: 6, src: 'com-a-vo.jpg', title: 'Amor que encontra família', description: 'Um daqueles registros que guardam mais coisa do que cabe na legenda.', date: '2026'},
+                {id: 7, src: 'momento-vestido.jpg', title: 'Minha amoreca linda', description: 'Sim, eu continuo completamente suspeito para avaliar sua beleza.', date: '2026'},
+                {id: 8, src: 'festa.jpg', title: 'Nós em modo festa', description: 'Elegância questionável nos acessórios, felicidade impecável.', date: '2026'},
+                {id: 9, src: 'futuro-sonhado.jpg', title: 'Um futuro em versão caótica', description: 'Uma brincadeira com o futuro, porque imaginar a vida com você é uma das minhas diversões favoritas.', date: 'Um dia? 👀'},
+                {id: 10, src: 'Linda.jpeg', title: 'Linda, simplesmente', description: 'Não precisava de explicação, mas eu quis registrar mesmo assim.', date: 'Nosso arquivo'},
+                {id: 11, src: 'Pulso.jpeg', title: 'Pequenos detalhes', description: 'Porque nosso amor também mora nas coisas mínimas.', date: 'Nosso arquivo'},
+                {id: 12, src: 'lick.jpeg', title: 'Caos carinhoso', description: 'Romance também é ser dois bobões juntos.', date: 'Nosso arquivo'}
+            ],
+            letter: {
+                title: 'Para minha Lorena, um ano depois',
+                paragraphs: [
+                    'Meu amor, esse site já existia, mas nós não somos mais exatamente as mesmas pessoas que éramos quando eu fiz a primeira versão. Em um ano coube tanta coisa que aquela página antiga ficou pequena para a gente.',
+                    'Amanhã faz um ano desde 15 de outubro de 2025, às 15:00. Um ano desde que o tempo começou a ganhar uma segunda unidade de medida para mim: antes de você e com você.',
+                    'Eu amo seu sorriso, seus cachos, suas sardinhas, sua inteligência, suas manias e até os pequenos detalhes que ninguém colocaria numa descrição grandiosa. Gosto de você inteira, não como uma ideia perfeita, mas como a pessoa real que eu continuo querendo conhecer mais.',
+                    'Nós já juntamos fotos bonitas, fotos bobas, mãos dadas, família, festas, beijos, dias comuns e planos absurdamente grandes. E o mais engraçado é que meus momentos favoritos nem sempre são os mais cinematográficos. Muitas vezes é só você perto de mim e pronto, o resto do mundo perde um pouco o volume.',
+                    'Se eu pudesse voltar para aquele Vini do começo, eu não contaria tudo o que vai acontecer. Só diria: vai. Vale cada segundo. E quando chegar perto de completar um ano, você ainda vai olhar para ela e pensar que teve uma sorte estatisticamente ridícula.',
+                    'Eu te amo, minha esposa honorária, minha namorada, minha amoreca linda, perfeita, maravilhosa, gostosa e fofa. E esta é só a versão 2.0. Ainda quero atualizações por muitas décadas.'
+                ],
+                signature: 'Para sempre seu,<br><strong>Vini</strong><br>Seu namorado, parceiro de caos e candidato permanente a futuro esposo ❤️'
+            },
+            timelineEvents: [
+                {id: 1, date: '15/10/2025 • 15:00', title: 'O começo oficial de nós', description: 'A coordenada temporal que virou feriado particular do meu coração.'},
+                {id: 2, date: '2025 → 2026', title: 'Os primeiros meses', description: 'Descobrindo manias, inventando apelidos, colecionando conversas e ficando cada vez mais difícil imaginar a rotina sem você.'},
+                {id: 3, date: '2026', title: 'Família entrou no álbum', description: 'Nossa história começou a aparecer em registros com quem a gente ama. O mundo de “eu e você” foi ficando maior.'},
+                {id: 4, date: '2026', title: 'Mãos dadas, literalmente', description: 'Uma foto simples que resume uma ideia grande: seguir junto.'},
+                {id: 5, date: '2026', title: 'Festas, selfies e beijinhos', description: 'Do arrumadinho ao completamente espontâneo, a gente foi enchendo a galeria de versões diferentes de nós.'},
+                {id: 6, date: '15/10/2026', title: '1 ano ❤️', description: '365 dias de história. Primeiro aniversário concluído, universo compartilhado ainda em expansão.'}
+            ],
+            quiz: {questions: [
+                {id: 1, question: 'Qual é a nossa data oficial?', options: ['14/10/2025', '15/10/2025', '16/10/2025', '57/57/2057'], correct: 1},
+                {id: 2, question: 'Segundo este site, qual é uma unidade oficial de medida do tempo do Vini?', options: ['Antes de você / com você', 'Newton por beijinho', 'Cachos por segundo', 'Axolotes por metro'], correct: 0},
+                {id: 3, question: 'Qual destas é uma evidência cientificamente aceita de amor?', options: ['Segurar sua mão', 'Roubar beijinhos', 'Fazer site de aniversário', 'Todas as anteriores'], correct: 3},
+                {id: 4, question: 'Quem ganhou na loteria estatística de encontrar alguém incrível?', options: ['Vini', 'Lorena', 'Os dois', 'O universo'], correct: 2},
+                {id: 5, question: 'Quanto tempo eu pretendo continuar te escolhendo?', options: ['Até amanhã', 'Mais 57 dias', 'Enquanto existir tempo para contar', 'Até acabar o CSS'], correct: 2}
+            ]},
+            compliments: [
+                'Minha amoreca', 'Minha princesa', 'Minha dama', 'Minha axolote fofa', 'Minha pulguinha',
+                'Minha futura esposa', 'Gostosa, com todo respeito (e pouco respeito)', 'Meu amor da minha vida',
+                'Seu sorriso desmonta meu raciocínio', 'Seus cachos merecem artigo científico', 'Suas sardas são meu mapa celeste',
+                'Sua inteligência me apaixona', 'Seu abraço é meu referencial inercial favorito', 'Você deixa dias comuns especiais',
+                'Eu amo rir com você', 'Eu amo planejar futuro com você', 'Você é minha pessoa favorita para perturbar',
+                'Eu escolheria você de novo', 'Meu porto seguro e meu caos favorito', '1 ano e ainda completamente apaixonado'
+            ]
+        };
+
+        // ====================== FUNÇÕES UTILITÁRIAS ======================
+        function showNotification(title, message, duration = 3000) {
+            elements.notificationTitle.textContent = title;
+            elements.notificationMessage.textContent = message;
+            elements.notification.classList.add('show');
+            
+            setTimeout(() => {
+                elements.notification.classList.remove('show');
+            }, duration);
+        }
+
+        function createHearts(count) {
+            const heartEmojis = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '💖', '💗', '💓', '💞', '💕', 'V+L', 'V&L'];
+            
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-emoji';
+                heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = '100vh';
+                
+                const size = Math.random() * 20 + 15;
+                heart.style.fontSize = size + 'px';
+                
+                const duration = Math.random() * 3 + 3;
+                heart.style.animationDuration = duration + 's';
+                
+                const delay = Math.random() * 2;
+                heart.style.animationDelay = delay + 's';
+                
+                elements.heartsContainer.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), (duration + delay) * 1000);
+            }
+        }
+
+        function launchConfetti(count) {
+            for (let i = 0; i < count; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.cssText = `
+                    width: ${Math.random() * 15 + 10}px;
+                    height: ${Math.random() * 15 + 10}px;
+                    background: ${['#ff6b8b', '#ff9ebb', '#c44569', '#786fa6'][Math.floor(Math.random()*4)]};
+                    left: ${Math.random() * 100}vw;
+                    border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+                    animation: confettiFall ${Math.random() * 3 + 2}s linear forwards;
+                `;
+                elements.confettiContainer.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // ====================== FUNÇÕES DE CARREGAMENTO ======================
+        function loadFromLocalStorage() {
+            const savedData = localStorage.getItem(CONFIG.storageKey);
+            if (savedData) {
+                try {
+                    siteData = JSON.parse(savedData);
+                    showNotification('Bem-vinda de volta!', 'Seus dados foram carregados ❤️');
+                } catch (e) {
+                    console.error('Erro ao carregar dados:', e);
+                }
+            }
+        }
+
+        function saveToLocalStorage() {
+            try {
+                localStorage.setItem(CONFIG.storageKey, JSON.stringify(siteData));
+                showNotification('Sucesso!', 'Dados salvos com amor 💾');
+            } catch (e) {
+                console.error('Erro ao salvar dados:', e);
+                showNotification('Ops!', 'Não foi possível salvar os dados');
+            }
+        }
+
+        // ====================== FUNÇÕES DE RENDERIZAÇÃO ======================
+        function renderPhotos() {
+            elements.photoGrid.innerHTML = '';
+            
+            siteData.photos.forEach((photo, index) => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'photo-item';
+                photoItem.onclick = () => viewPhoto(photo);
+                
+                // Criar uma imagem com fallback
+                const img = new Image();
+                img.src = photo.src;
+                img.alt = photo.title;
+                img.onerror = () => {
+                    img.src = 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80';
+                };
+                
+                photoItem.innerHTML = `
+                    ${img.outerHTML}
+                    <div class="photo-overlay">
+                        <strong>${photo.title}</strong>
+                        <p style="font-size: 0.8rem; margin-top: 3px; opacity: 0.9;">${photo.description}</p>
+                    </div>
+                `;
+                
+                elements.photoGrid.appendChild(photoItem);
+            });
+        }
+
+        function renderTimeline() {
+            elements.timeline.innerHTML = '';
+            
+            siteData.timelineEvents.forEach(event => {
+                const item = document.createElement('div');
+                item.className = 'timeline-item';
+                item.innerHTML = `
+                    <div class="timeline-date">
+                        <i class="fas fa-heart"></i> ${event.date}
+                    </div>
+                    <div class="timeline-title">${event.title}</div>
+                    <p>${event.description}</p>
+                `;
+                elements.timeline.appendChild(item);
+            });
+        }
+
+        function renderCompliments() {
+            elements.complimentsContainer.innerHTML = '';
+            
+            siteData.compliments.forEach(compliment => {
+                const element = document.createElement('div');
+                element.className = 'compliment';
+                element.textContent = compliment;
+                element.onclick = () => {
+                    showNotification('Elogio', `"${compliment}" - Para você ❤️`);
+                    createHearts(2);
+                };
+                elements.complimentsContainer.appendChild(element);
+            });
+        }
+
+        function renderQuiz() {
+            // Só renderiza quando o quiz começar
+            elements.quizResult.style.display = 'none';
+            elements.startQuizBtn.style.display = 'block';
+            elements.quizOptions.innerHTML = '';
+        }
+
+        // ====================== FUNÇÕES DE EDIÇÃO ======================
+        function openEditForm(type) {
+            elements.adminMenu.classList.remove('active');
+            
+            let formHTML = '';
+            let title = '';
+            
+            switch(type) {
+                case 'photos':
+                    title = 'Gerenciar Fotos';
+                    formHTML = getPhotosForm();
+                    break;
+                case 'timeline':
+                    title = 'Gerenciar Linha do Tempo';
+                    formHTML = getTimelineForm();
+                    break;
+                case 'quiz':
+                    title = 'Gerenciar Quiz';
+                    formHTML = getQuizForm();
+                    break;
+                case 'compliments':
+                    title = 'Gerenciar Elogios';
+                    formHTML = getComplimentsForm();
+                    break;
+                case 'letter':
+                    title = 'Editar Carta de Amor';
+                    formHTML = getLetterForm();
+                    break;
+            }
+            
+            elements.editContent.innerHTML = `
+                <h2 style="color: var(--secondary-color); margin-bottom: 20px; text-align: center;">${title}</h2>
+                ${formHTML}
+                <div class="form-actions">
+                    <button class="btn" onclick="saveEditForm('${type}')">
+                        <i class="fas fa-save"></i> Salvar
+                    </button>
+                    <button class="btn btn-cancel" onclick="closeEditModal()">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                </div>
+            `;
+            
+            elements.editModal.classList.add('active');
+        }
+
+        function getPhotosForm() {
+            let html = `
+                <div class="edit-form">
+                    <h3 style="color: var(--accent-color); margin-bottom: 15px;">Adicionar Nova Foto</h3>
+                    <div class="form-group">
+                        <label for="newPhotoTitle">Título:</label>
+                        <input type="text" id="newPhotoTitle" class="form-input" placeholder="Ex: Nosso primeiro dia">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPhotoDescription">Descrição:</label>
+                        <input type="text" id="newPhotoDescription" class="form-input" placeholder="Ex: O começo de tudo ❤️">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPhotoDate">Data:</label>
+                        <input type="text" id="newPhotoDate" class="form-input" placeholder="DD/MM/AAAA">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPhotoFile">Foto:</label>
+                        <input type="file" id="newPhotoFile" class="form-input" accept="image/*" onchange="previewNewPhoto(this)">
+                    </div>
+                    <div id="photoPreview" style="margin: 15px 0; display: none;">
+                        <img id="previewImage" src="" style="max-width: 100%; border-radius: 10px;">
+                    </div>
+                    <button class="btn btn-small" onclick="addNewPhoto()" style="width: 100%;">
+                        <i class="fas fa-plus"></i> Adicionar Foto
+                    </button>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <h3 style="color: var(--accent-color); margin-bottom: 15px;">Fotos Existentes (${siteData.photos.length})</h3>
+            `;
+            
+            siteData.photos.forEach((photo, index) => {
+                html += `
+                    <div class="edit-form" style="margin-bottom: 15px;">
+                        <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 15px;">
+                            <img src="${photo.src}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px;">
+                            <div style="flex: 1;">
+                                <strong style="color: var(--secondary-color);">${photo.title}</strong>
+                                <p style="font-size: 0.9rem; margin-top: 5px;">${photo.description}</p>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-small" onclick="editPhoto(${index})">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                            <button class="btn btn-small btn-delete" onclick="deletePhoto(${index})">
+                                <i class="fas fa-trash"></i> Excluir
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `</div>`;
+            return html;
+        }
+
+        function previewNewPhoto(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                    document.getElementById('photoPreview').style.display = 'block';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function addNewPhoto() {
+            const title = document.getElementById('newPhotoTitle').value.trim();
+            const description = document.getElementById('newPhotoDescription').value.trim();
+            const date = document.getElementById('newPhotoDate').value.trim();
+            const fileInput = document.getElementById('newPhotoFile');
+            
+            if (!title || !description || !fileInput.files[0]) {
+                showNotification('Atenção', 'Preencha todos os campos!');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const newPhoto = {
+                    id: Date.now(),
+                    src: e.target.result,
+                    title: title,
+                    description: description,
+                    date: date || new Date().toLocaleDateString('pt-BR')
+                };
+                
+                siteData.photos.push(newPhoto);
+                renderPhotos();
+                saveToLocalStorage();
+                
+                // Limpar formulário
+                document.getElementById('newPhotoTitle').value = '';
+                document.getElementById('newPhotoDescription').value = '';
+                document.getElementById('newPhotoDate').value = '';
+                document.getElementById('newPhotoFile').value = '';
+                document.getElementById('photoPreview').style.display = 'none';
+                
+                showNotification('Sucesso!', 'Foto adicionada com amor! 📸');
+            };
+            
+            reader.readAsDataURL(file);
+        }
+
+        function editPhoto(index) {
+            const photo = siteData.photos[index];
+            
+            elements.editContent.innerHTML = `
+                <h2 style="color: var(--secondary-color); margin-bottom: 20px;">Editar Foto</h2>
+                <div class="edit-form">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <img src="${photo.src}" style="max-width: 200px; border-radius: 10px;">
+                    </div>
+                    <div class="form-group">
+                        <label>Título:</label>
+                        <input type="text" id="editPhotoTitle" class="form-input" value="${photo.title}">
+                    </div>
+                    <div class="form-group">
+                        <label>Descrição:</label>
+                        <input type="text" id="editPhotoDescription" class="form-input" value="${photo.description}">
+                    </div>
+                    <div class="form-group">
+                        <label>Data:</label>
+                        <input type="text" id="editPhotoDate" class="form-input" value="${photo.date}">
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn" onclick="savePhotoEdit(${index})">
+                            <i class="fas fa-save"></i> Salvar Alterações
+                        </button>
+                        <button class="btn btn-cancel" onclick="openEditForm('photos')">
+                            <i class="fas fa-arrow-left"></i> Voltar
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function savePhotoEdit(index) {
+            const title = document.getElementById('editPhotoTitle').value.trim();
+            const description = document.getElementById('editPhotoDescription').value.trim();
+            const date = document.getElementById('editPhotoDate').value.trim();
+            
+            if (!title || !description) {
+                showNotification('Atenção', 'Preencha todos os campos!');
+                return;
+            }
+            
+            siteData.photos[index].title = title;
+            siteData.photos[index].description = description;
+            siteData.photos[index].date = date;
+            
+            renderPhotos();
+            saveToLocalStorage();
+            openEditForm('photos');
+            showNotification('Sucesso!', 'Foto atualizada! ✨');
+        }
+
+        function deletePhoto(index) {
+            if (confirm('Tem certeza que deseja excluir esta foto?')) {
+                siteData.photos.splice(index, 1);
+                renderPhotos();
+                saveToLocalStorage();
+                showNotification('Foto Excluída', 'A foto foi removida');
+            }
+        }
+
+        function getTimelineForm() {
+            let html = `
+                <div class="edit-form">
+                    <h3 style="color: var(--accent-color); margin-bottom: 15px;">Adicionar Novo Momento</h3>
+                    <div class="form-group">
+                        <label for="newEventDate">Data:</label>
+                        <input type="text" id="newEventDate" class="form-input" placeholder="DD/MM/AAAA">
+                    </div>
+                    <div class="form-group">
+                        <label for="newEventTitle">Título:</label>
+                        <input type="text" id="newEventTitle" class="form-input" placeholder="Ex: Nosso primeiro beijo">
+                    </div>
+                    <div class="form-group">
+                        <label for="newEventDescription">Descrição:</label>
+                        <textarea id="newEventDescription" class="form-input form-textarea" placeholder="Descreva este momento especial..."></textarea>
+                    </div>
+                    <button class="btn btn-small" onclick="addNewEvent()" style="width: 100%;">
+                        <i class="fas fa-plus"></i> Adicionar Momento
+                    </button>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <h3 style="color: var(--accent-color); margin-bottom: 15px;">Momentos Existentes (${siteData.timelineEvents.length})</h3>
+            `;
+            
+            siteData.timelineEvents.forEach((event, index) => {
+                html += `
+                    <div class="edit-form" style="margin-bottom: 15px;">
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <strong style="color: var(--secondary-color);">${event.date}</strong>
+                                <span style="font-size: 0.9rem; color: var(--accent-color);">#${index + 1}</span>
+                            </div>
+                            <div><strong>${event.title}</strong></div>
+                            <p style="margin-top: 5px; font-size: 0.9rem;">${event.description}</p>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-small" onclick="editEvent(${index})">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                            <button class="btn btn-small btn-delete" onclick="deleteEvent(${index})">
+                                <i class="fas fa-trash"></i> Excluir
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `</div>`;
+            return html;
+        }
+
+        function addNewEvent() {
+            const date = document.getElementById('newEventDate').value.trim();
+            const title = document.getElementById('newEventTitle').value.trim();
+            const description = document.getElementById('newEventDescription').value.trim();
+            
+            if (!date || !title || !description) {
+                showNotification('Atenção', 'Preencha todos os campos!');
+                return;
+            }
+            
+            const newEvent = {
+                id: Date.now(),
+                date: date,
+                title: title,
+                description: description
+            };
+            
+            siteData.timelineEvents.push(newEvent);
+            renderTimeline();
+            saveToLocalStorage();
+            
+            // Limpar formulário
+            document.getElementById('newEventDate').value = '';
+            document.getElementById('newEventTitle').value = '';
+            document.getElementById('newEventDescription').value = '';
+            
+            showNotification('Sucesso!', 'Momento adicionado! ⏳');
+        }
+
+        function editEvent(index) {
+            const event = siteData.timelineEvents[index];
+            
+            elements.editContent.innerHTML = `
+                <h2 style="color: var(--secondary-color); margin-bottom: 20px;">Editar Momento</h2>
+                <div class="edit-form">
+                    <div class="form-group">
+                        <label>Data:</label>
+                        <input type="text" id="editEventDate" class="form-input" value="${event.date}">
+                    </div>
+                    <div class="form-group">
+                        <label>Título:</label>
+                        <input type="text" id="editEventTitle" class="form-input" value="${event.title}">
+                    </div>
+                    <div class="form-group">
+                        <label>Descrição:</label>
+                        <textarea id="editEventDescription" class="form-input form-textarea">${event.description}</textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn" onclick="saveEventEdit(${index})">
+                            <i class="fas fa-save"></i> Salvar
+                        </button>
+                        <button class="btn btn-cancel" onclick="openEditForm('timeline')">
+                            <i class="fas fa-arrow-left"></i> Voltar
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function saveEventEdit(index) {
+            const date = document.getElementById('editEventDate').value.trim();
+            const title = document.getElementById('editEventTitle').value.trim();
+            const description = document.getElementById('editEventDescription').value.trim();
+            
+            if (!date || !title || !description) {
+                showNotification('Atenção', 'Preencha todos os campos!');
+                return;
+            }
+            
+            siteData.timelineEvents[index].date = date;
+            siteData.timelineEvents[index].title = title;
+            siteData.timelineEvents[index].description = description;
+            
+            renderTimeline();
+            saveToLocalStorage();
+            openEditForm('timeline');
+            showNotification('Sucesso!', 'Momento atualizado! ✨');
+        }
+
+        function deleteEvent(index) {
+            if (confirm('Tem certeza que deseja excluir este momento?')) {
+                siteData.timelineEvents.splice(index, 1);
+                renderTimeline();
+                saveToLocalStorage();
+                showNotification('Momento Excluído', 'O momento foi removido');
+            }
+        }
+
+        function getQuizForm() {
+            let html = `
+                <div class="edit-form">
+                    <h3 style="color: var(--accent-color); margin-bottom: 15px;">Adicionar Nova Pergunta</h3>
+                    <div class="form-group">
+                        <label for="newQuestionText">Pergunta:</label>
+                        <textarea id="newQuestionText" class="form-input form-textarea" placeholder="Digite a pergunta..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="newQuestionOption1">Opção 1 (correta):</label>
+                        <input type="text" id="newQuestionOption1" class="form-input" placeholder="Resposta correta">
+                    </div>
+                    <div class="form-group">
+                        <label for="newQuestionOption2">Opção 2:</label>
+                        <input type="text" id="newQuestionOption2" class="form-input" placeholder="Resposta incorreta">
+                    </div>
+                    <div class="form-group">
+                        <label for="newQuestionOption3">Opção 3:</label>
+                        <input type="text" id="newQuestionOption3" class="form-input" placeholder="Resposta incorreta">
+                    </div>
+                    <div class="form-group">
+                        <label for="newQuestionOption4">Opção 4:</label>
+                        <input type="text" id="newQuestionOption4" class="form-input" placeholder="Resposta incorreta">
+                    </div>
+                    <button class="btn btn-small" onclick="addNewQuestion()" style="width: 100%;">
+                        <i class="fas fa-plus"></i> Adicionar Pergunta
+                    </button>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <h3 style="color: var(--accent-color); margin-bottom: 15px;">Perguntas Existentes (${siteData.quiz.questions.length})</h3>
+            `;
+            
+            siteData.quiz.questions.forEach((question, index) => {
+                html += `
+                    <div class="edit-form" style="margin-bottom: 15px;">
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <strong style="color: var(--secondary-color);">Pergunta #${index + 1}</strong>
+                            </div>
+                            <div><strong>${question.question}</strong></div>
+                            <div style="margin-top: 10px; font-size: 0.9rem;">
+                                ${question.options.map((opt, i) => `
+                                    <div style="padding: 5px 10px; background: ${i === question.correct ? 'rgba(76, 209, 55, 0.1)' : 'rgba(255, 255, 255, 0.5)'}; 
+                                        border-radius: 5px; margin: 3px 0; border-left: 3px solid ${i === question.correct ? '#2ecc71' : '#ff6b8b'}">
+                                        ${opt} ${i === question.correct ? '✓' : ''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-small" onclick="editQuestion(${index})">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                            <button class="btn btn-small btn-delete" onclick="deleteQuestion(${index})">
+                                <i class="fas fa-trash"></i> Excluir
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `</div>`;
+            return html;
+        }
+
+        function addNewQuestion() {
+            const questionText = document.getElementById('newQuestionText').value.trim();
+            const option1 = document.getElementById('newQuestionOption1').value.trim();
+            const option2 = document.getElementById('newQuestionOption2').value.trim();
+            const option3 = document.getElementById('newQuestionOption3').value.trim();
+            const option4 = document.getElementById('newQuestionOption4').value.trim();
+            
+            if (!questionText || !option1 || !option2 || !option3 || !option4) {
+                showNotification('Atenção', 'Preencha todos os campos!');
+                return;
+            }
+            
+            const newQuestion = {
+                id: Date.now(),
+                question: questionText,
+                options: [option1, option2, option3, option4],
+                correct: 0
+            };
+            
+            siteData.quiz.questions.push(newQuestion);
+            saveToLocalStorage();
+            
+            // Limpar formulário
+            document.getElementById('newQuestionText').value = '';
+            document.getElementById('newQuestionOption1').value = '';
+            document.getElementById('newQuestionOption2').value = '';
+            document.getElementById('newQuestionOption3').value = '';
+            document.getElementById('newQuestionOption4').value = '';
+            
+            showNotification('Sucesso!', 'Pergunta adicionada! ❓');
+        }
+
+        function editQuestion(index) {
+            const question = siteData.quiz.questions[index];
+            
+            elements.editContent.innerHTML = `
+                <h2 style="color: var(--secondary-color); margin-bottom: 20px;">Editar Pergunta</h2>
+                <div class="edit-form">
+                    <div class="form-group">
+                        <label>Pergunta:</label>
+                        <textarea id="editQuestionText" class="form-input form-textarea">${question.question}</textarea>
+                    </div>
+                    ${question.options.map((option, i) => `
+                        <div class="form-group">
+                            <label>Opção ${i + 1} ${i === question.correct ? '(correta)' : ''}:</label>
+                            <input type="text" id="editQuestionOption${i}" class="form-input" value="${option}">
+                        </div>
+                    `).join('')}
+                    <div class="form-group">
+                        <label>Qual é a opção correta?</label>
+                        <select id="editQuestionCorrect" class="form-input">
+                            ${question.options.map((_, i) => `
+                                <option value="${i}" ${i === question.correct ? 'selected' : ''}>Opção ${i + 1}</option>
+                            `).join('')}
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn" onclick="saveQuestionEdit(${index})">
+                            <i class="fas fa-save"></i> Salvar
+                        </button>
+                        <button class="btn btn-cancel" onclick="openEditForm('quiz')">
+                            <i class="fas fa-arrow-left"></i> Voltar
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function saveQuestionEdit(index) {
+            const questionText = document.getElementById('editQuestionText').value.trim();
+            const option0 = document.getElementById('editQuestionOption0').value.trim();
+            const option1 = document.getElementById('editQuestionOption1').value.trim();
+            const option2 = document.getElementById('editQuestionOption2').value.trim();
+            const option3 = document.getElementById('editQuestionOption3').value.trim();
+            const correct = parseInt(document.getElementById('editQuestionCorrect').value);
+            
+            if (!questionText || !option0 || !option1 || !option2 || !option3) {
+                showNotification('Atenção', 'Preencha todos os campos!');
+                return;
+            }
+            
+            siteData.quiz.questions[index].question = questionText;
+            siteData.quiz.questions[index].options = [option0, option1, option2, option3];
+            siteData.quiz.questions[index].correct = correct;
+            
+            saveToLocalStorage();
+            openEditForm('quiz');
+            showNotification('Sucesso!', 'Pergunta atualizada! ✨');
+        }
+
+        function deleteQuestion(index) {
+            if (confirm('Tem certeza que deseja excluir esta pergunta?')) {
+                siteData.quiz.questions.splice(index, 1);
+                saveToLocalStorage();
+                openEditForm('quiz');
+                showNotification('Pergunta Excluída', 'A pergunta foi removida');
+            }
+        }
+
+        function getComplimentsForm() {
+            let html = `
+                <div class="edit-form">
+                    <h3 style="color: var(--accent-color); margin-bottom: 15px;">Adicionar Novo Elogio</h3>
+                    <div class="form-group">
+                        <label for="newComplimentText">Elogio:</label>
+                        <input type="text" id="newComplimentText" class="form-input" placeholder="Ex: Você é minha razão de viver">
+                    </div>
+                    <button class="btn btn-small" onclick="addNewCompliment()" style="width: 100%;">
+                        <i class="fas fa-plus"></i> Adicionar Elogio
+                    </button>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <h3 style="color: var(--accent-color); margin-bottom: 15px;">Elogios Existentes (${siteData.compliments.length})</h3>
+                    <div style="max-height: 300px; overflow-y: auto; padding-right: 10px;">
+            `;
+            
+            siteData.compliments.forEach((compliment, index) => {
+                html += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; 
+                         padding: 12px; background: rgba(255, 155, 187, 0.1); border-radius: 10px; margin-bottom: 10px;">
+                        <span>${compliment}</span>
+                        <button class="btn btn-small btn-delete" onclick="deleteCompliment(${index})" style="padding: 5px 10px;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+            });
+            
+            html += `</div></div>`;
+            return html;
+        }
+
+        function addNewCompliment() {
+            const text = document.getElementById('newComplimentText').value.trim();
+            
+            if (!text) {
+                showNotification('Atenção', 'Digite um elogio!');
+                return;
+            }
+            
+            siteData.compliments.push(text);
+            renderCompliments();
+            saveToLocalStorage();
+            
+            document.getElementById('newComplimentText').value = '';
+            showNotification('Sucesso!', 'Elogio adicionado! 💖');
+        }
+
+        function deleteCompliment(index) {
+            if (confirm('Tem certeza que deseja excluir este elogio?')) {
+                siteData.compliments.splice(index, 1);
+                renderCompliments();
+                saveToLocalStorage();
+                showNotification('Elogio Excluído', 'O elogio foi removido');
+            }
+        }
+
+        function getLetterForm() {
+            let html = `
+                <div class="edit-form">
+                    <h3 style="color: var(--accent-color); margin-bottom: 15px;">Editar Carta de Amor</h3>
+                    <div class="form-group">
+                        <label for="editLetterTitle">Título:</label>
+                        <input type="text" id="editLetterTitle" class="form-input" value="${siteData.letter.title}">
+                    </div>
+                    
+                    <h4 style="color: var(--accent-color); margin: 20px 0 10px;">Parágrafos:</h4>
+            `;
+            
+            siteData.letter.paragraphs.forEach((paragraph, index) => {
+                html += `
+                    <div class="form-group">
+                        <label>Parágrafo ${index + 1}:</label>
+                        <textarea id="editParagraph${index}" class="form-input form-textarea">${paragraph}</textarea>
+                        <button class="btn btn-small btn-delete" onclick="deleteParagraph(${index})" 
+                                style="margin-top: 5px; padding: 5px 10px; font-size: 0.8rem;">
+                            <i class="fas fa-trash"></i> Remover este parágrafo
+                        </button>
+                    </div>
+                `;
+            });
+            
+            html += `
+                    <button class="btn btn-small" onclick="addNewParagraph()" style="width: 100%; margin: 10px 0 20px;">
+                        <i class="fas fa-plus"></i> Adicionar Novo Parágrafo
+                    </button>
+                    
+                    <div class="form-group">
+                        <label for="editLetterSignature">Assinatura:</label>
+                        <textarea id="editLetterSignature" class="form-input form-textarea">${siteData.letter.signature}</textarea>
+                    </div>
+                </div>
+            `;
+            
+            return html;
+        }
+
+        function addNewParagraph() {
+            siteData.letter.paragraphs.push('');
+            openEditForm('letter');
+        }
+
+        function deleteParagraph(index) {
+            if (confirm('Tem certeza que deseja excluir este parágrafo?')) {
+                siteData.letter.paragraphs.splice(index, 1);
+                openEditForm('letter');
+            }
+        }
+
+        function saveEditForm(type) {
+            if (type === 'letter') {
+                const title = document.getElementById('editLetterTitle').value.trim();
+                const signature = document.getElementById('editLetterSignature').value.trim();
+                
+                if (!title || !signature) {
+                    showNotification('Atenção', 'Preencha todos os campos!');
+                    return;
+                }
+                
+                // Coletar parágrafos
+                const paragraphs = [];
+                for (let i = 0; i < siteData.letter.paragraphs.length; i++) {
+                    const paragraph = document.getElementById(`editParagraph${i}`).value.trim();
+                    if (paragraph) {
+                        paragraphs.push(paragraph);
+                    }
+                }
+                
+                siteData.letter.title = title;
+                siteData.letter.paragraphs = paragraphs;
+                siteData.letter.signature = signature;
+            }
+            
+            saveToLocalStorage();
+            closeEditModal();
+            showNotification('Sucesso!', 'Alterações salvas! 💾');
+        }
+
+        function saveAllData() {
+            saveToLocalStorage();
+            showNotification('Tudo Salvo!', 'Todos os dados foram armazenados com amor! 💖');
+        }
+
+        // ====================== FUNÇÕES DO QUIZ ======================
+        let quizState = {
+            currentQuestion: 0,
+            score: 0,
+            inProgress: false
+        };
+
+        function startQuiz() {
+            if (siteData.quiz.questions.length === 0) {
+                showNotification('Ops!', 'Adicione perguntas primeiro!');
+                return;
+            }
+            
+            quizState = {
+                currentQuestion: 0,
+                score: 0,
+                inProgress: true
+            };
+            
+            elements.startQuizBtn.style.display = 'none';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = siteData.quiz.questions[quizState.currentQuestion];
+            
+            // Atualizar progresso
+            const progress = ((quizState.currentQuestion + 1) / siteData.quiz.questions.length) * 100;
+            elements.quizProgressBar.style.width = `${progress}%`;
+            
+            elements.quizQuestion.textContent = question.question;
+            
+            // Limpar opções anteriores
+            elements.quizOptions.innerHTML = '';
+            
+            // Adicionar novas opções
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'quiz-option';
+                optionElement.textContent = option;
+                optionElement.dataset.index = index;
+                
+                optionElement.onclick = () => selectAnswer(index);
+                
+                elements.quizOptions.appendChild(optionElement);
+            });
+        }
+
+        function selectAnswer(selectedIndex) {
+            const question = siteData.quiz.questions[quizState.currentQuestion];
+            const options = elements.quizOptions.querySelectorAll('.quiz-option');
+            
+            // Remover seleção anterior
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Selecionar a opção clicada
+            options[selectedIndex].classList.add('selected');
+            
+            // Verificar resposta
+            if (selectedIndex === question.correct) {
+                quizState.score++;
+                showNotification('Correto!', 'Resposta certa! 🎉');
+                createHearts(3);
+            } else {
+                showNotification('Ops!', `A resposta correta era: ${question.options[question.correct]}`);
+            }
+            
+            // Avançar para próxima pergunta após 1.5 segundos
+            setTimeout(() => {
+                quizState.currentQuestion++;
+                
+                if (quizState.currentQuestion < siteData.quiz.questions.length) {
+                    showQuestion();
+                } else {
+                    showQuizResult();
+                }
+            }, 1500);
+        }
+
+        function showQuizResult() {
+            const percentage = (quizState.score / siteData.quiz.questions.length) * 100;
+            
+            elements.quizScore.textContent = `${quizState.score}/${siteData.quiz.questions.length}`;
+            
+            let message = '';
+            if (percentage === 100) {
+                message = 'Você é incrível meu amor todos os dias e todos os milésimos eu te amo❤️';
+                launchConfetti(30);
+                createHearts(10);
+            } else if (percentage >= 70) {
+                message = 'Você é incrível minha Dama que eu amo tanto';
+                createHearts(5);
+            } else if (percentage >= 50) {
+                message = 'Eu te amo muito';
+                createHearts(3);
+            } else {
+                message = 'Eu te amo muitoooooo mais que você sabia?';
+                createHearts(2);
+            }
+            
+            document.getElementById('quizMessage').textContent = message;
+            elements.quizResult.style.display = 'block';
+            quizState.inProgress = false;
+        }
+
+        function restartQuiz() {
+            elements.quizResult.style.display = 'none';
+            elements.startQuizBtn.style.display = 'block';
+            elements.quizProgressBar.style.width = '0%';
+        }
+
+        // ====================== FUNÇÕES DA CARTA ======================
+        function openLetterModal() {
+            let letterHTML = `
+                <h2>${siteData.letter.title}</h2>
+                ${siteData.letter.paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('')}
+                <div class="letter-signature">${siteData.letter.signature}</div>
+            `;
+            
+            elements.letterContent.innerHTML = letterHTML;
+            elements.letterModal.classList.add('active');
+            createHearts(5);
+        }
+
+        function viewPhoto(photo) {
+            let photoHTML = `
+                <div style="text-align: center;">
+                    <img src="${photo.src}" alt="${photo.title}" 
+                         style="max-width: 100%; border-radius: 15px; margin-bottom: 20px;">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 10px;">${photo.title}</h3>
+                    <p style="color: var(--text-dark); margin-bottom: 10px;">${photo.description}</p>
+                    <p style="color: var(--accent-color); font-style: italic;">
+                        <i class="fas fa-calendar-alt"></i> ${photo.date}
+                    </p>
+                </div>
+            `;
+            
+            elements.editContent.innerHTML = photoHTML;
+            elements.editModal.classList.add('active');
+        }
+
+        // ====================== CONTADOR DE TEMPO ======================
+        function getCalendarDiff(start, end) {
+            if (end < start) return {years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0};
+            let cursor = new Date(start);
+            let years = end.getFullYear() - cursor.getFullYear();
+            let candidate = new Date(cursor);
+            candidate.setFullYear(cursor.getFullYear() + years);
+            if (candidate > end) { years--; candidate = new Date(cursor); candidate.setFullYear(cursor.getFullYear() + years); }
+            cursor = candidate;
+            let months = (end.getFullYear() - cursor.getFullYear()) * 12 + end.getMonth() - cursor.getMonth();
+            candidate = new Date(cursor);
+            candidate.setMonth(cursor.getMonth() + months);
+            if (candidate > end) { months--; candidate = new Date(cursor); candidate.setMonth(cursor.getMonth() + months); }
+            cursor = candidate;
+            let remaining = end - cursor;
+            const days = Math.floor(remaining / 86400000); remaining -= days * 86400000;
+            const hours = Math.floor(remaining / 3600000); remaining -= hours * 3600000;
+            const minutes = Math.floor(remaining / 60000); remaining -= minutes * 60000;
+            const seconds = Math.floor(remaining / 1000);
+            return {years, months, days, hours, minutes, seconds};
+        }
+
+        function updateTimeCounter() {
+            const now = new Date();
+            const diff = getCalendarDiff(CONFIG.startDate, now);
+            const totalMs = Math.max(0, now - CONFIG.startDate);
+            const totalDays = Math.floor(totalMs / 86400000);
+
+            document.getElementById('years').textContent = String(diff.years).padStart(2, '0');
+            document.getElementById('months').textContent = String(diff.months).padStart(2, '0');
+            document.getElementById('days').textContent = String(diff.days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(diff.hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(diff.minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(diff.seconds).padStart(2, '0');
+
+            if (now >= CONFIG.anniversaryDate) {
+                elements.eternityText.innerHTML = `1 ano completo e o cronômetro continua... ❤️`;
+            } else {
+                elements.eternityText.innerHTML = `${diff.months} meses, ${diff.days} dias e contando para o nosso primeiro ano ❤️`;
+            }
+            elements.liveLoveCounter.textContent = `${totalDays} dias compartilhados e contando`;
+            updateAnniversaryCountdown(now);
+        }
+
+        function updateAnniversaryCountdown(now = new Date()) {
+            const target = CONFIG.anniversaryDate;
+            const message = document.getElementById('anniversaryMessage');
+            let delta = target - now;
+            if (delta <= 0) {
+                ['aDays','aHours','aMinutes','aSeconds'].forEach(id => document.getElementById(id).textContent = '00');
+                if (!document.body.dataset.anniversaryCelebrated) {
+                    document.body.dataset.anniversaryCelebrated = '1';
+                    launchConfetti(80); createHearts(35);
+                }
+                message.innerHTML = '<strong>UM ANO DE NÓS! ❤️</strong><br>Primeira volta completa ao redor do Sol oficialmente concluída juntos. Próxima órbita: já em andamento.';
+                return;
+            }
+            const days = Math.floor(delta / 86400000); delta %= 86400000;
+            const hours = Math.floor(delta / 3600000); delta %= 3600000;
+            const minutes = Math.floor(delta / 60000); delta %= 60000;
+            const seconds = Math.floor(delta / 1000);
+            document.getElementById('aDays').textContent = String(days).padStart(2, '0');
+            document.getElementById('aHours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('aMinutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('aSeconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        const loveMessages = [
+            'Eu amo quando você sorri daquele jeito que faz seus olhos sorrirem junto.',
+            'Sua mão na minha continua sendo uma das coisas mais simples e mais bonitas do mundo.',
+            'Você é linda arrumada, despenteada, séria, rindo e especialmente quando nem percebe que estou te olhando.',
+            'Ainda quero descobrir milhares de pequenas coisas sobre você.',
+            'Seus cachos têm uma política externa própria e eu apoio integralmente.',
+            'Eu escolheria você em qualquer linha do tempo minimamente sensata.',
+            'Você é meu experimento favorito com resultado reproduzível: fico feliz quando estou com você.',
+            'Meu plano científico de longo prazo é simples: envelhecer e continuar te chamando de amoreca.'
+        ];
+        const dateIdeas = [
+            'Date de cafeteria + escolher um livro um para o outro ☕📚',
+            'Noite de observar estrelas e discutir qual delas teria o pior nome possível 🔭✨',
+            'Cozinhar algo juntos sem culpar a termodinâmica se der errado 🍝',
+            'Passeio sem destino + cada um escolhe uma parada surpresa 🚶‍♀️🚶‍♂️',
+            'Filme ruim de propósito + competição de comentários absurdos 🎬',
+            'Piquenique + 10 perguntas que nunca fizemos um ao outro 🌳',
+            'Date de fotos: recriar fotos antigas nossas um ano depois 📸',
+            'Noite de jogos valendo prêmio em beijinhos, sistema monetário estável 🎮💋'
+        ];
+        function randomLoveMessage() {
+            const text = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+            document.getElementById('randomLoveText').textContent = text; createHearts(5);
+        }
+        function randomDateIdea() {
+            const text = dateIdeas[Math.floor(Math.random() * dateIdeas.length)];
+            document.getElementById('dateIdeaText').textContent = text; launchConfetti(12);
+        }
+        function chooseMeAgain() {
+            showNotification('Resposta registrada ❤️', 'Contrato renovado por mais uma eternidade (termos totalmente suspeitos).');
+            createHearts(25); launchConfetti(35);
+        }
+        function openCapsule() {
+            const secret = document.getElementById('capsuleSecret');
+            secret.classList.remove('hidden');
+            secret.classList.add('capsule-reveal');
+            createHearts(12);
+        }
+
+        // ====================== FUNÇÕES DO MODAL ======================
+        function closeEditModal() {
+            elements.editModal.classList.remove('active');
+        }
+
+        // ====================== EVENT LISTENERS ======================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Carregar dados salvos
+            loadFromLocalStorage();
+            
+            // Renderizar conteúdo
+            renderPhotos();
+            renderTimeline();
+            renderCompliments();
+            renderQuiz();
+            
+            // Iniciar contador
+            updateTimeCounter();
+            setInterval(updateTimeCounter, 1000);
+            
+            // Esconder loader
+            setTimeout(() => {
+                elements.loader.classList.add('hidden');
+                showNotification('Bem-vinda, princesa!', 'Este site foi feito com todo meu amor para você 💖');
+                createHearts(10);
+            }, 1500);
+            
+            // Admin panel toggle
+            elements.adminBtn.onclick = () => {
+                elements.adminMenu.classList.toggle('active');
+            };
+            
+            // Fechar modais quando clicar fora
+            elements.letterModal.onclick = (e) => {
+                if (e.target === elements.letterModal) {
+                    elements.letterModal.classList.remove('active');
+                }
+            };
+            
+            elements.editModal.onclick = (e) => {
+                if (e.target === elements.editModal) {
+                    closeEditModal();
+                }
+            };
+            
+            // Fechar modais com botão
+            elements.modalClose.onclick = () => {
+                elements.letterModal.classList.remove('active');
+            };
+            
+            elements.editModalClose.onclick = closeEditModal;
+            
+            // Fechar menu admin quando clicar fora
+            document.addEventListener('click', (e) => {
+                if (!elements.adminBtn.contains(e.target) && !elements.adminMenu.contains(e.target)) {
+                    elements.adminMenu.classList.remove('active');
+                }
+            });
+            
+            // Atalhos de teclado
+            document.addEventListener('keydown', (e) => {
+                if (e.code === 'Space' && !e.target.matches('input, textarea')) {
+                    e.preventDefault();
+                    createHearts(3);
+                }
+                
+                if (e.code === 'Escape') {
+                    elements.letterModal.classList.remove('active');
+                    closeEditModal();
+                    elements.adminMenu.classList.remove('active');
+                }
+            });
+            
+            const noButton = document.getElementById('noButton');
+            if (noButton) {
+                const dodge = () => {
+                    const x = Math.round((Math.random() - 0.5) * 150);
+                    const y = Math.round((Math.random() - 0.5) * 90);
+                    noButton.style.transform = `translate(${x}px, ${y}px) rotate(${Math.round((Math.random()-0.5)*12)}deg)`;
+                    document.getElementById('randomLoveText').textContent = 'O botão “não” apresentou instabilidade experimental. Curioso. 😌';
+                };
+                noButton.addEventListener('mouseenter', dodge);
+                noButton.addEventListener('touchstart', (e) => { e.preventDefault(); dodge(); }, {passive:false});
+                noButton.addEventListener('click', dodge);
+            }
+
+            // Corações periódicos
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    createHearts(1);
+                }
+            }, 8000);
+        });
+
+        // ====================== INICIALIZAÇÃO ======================
+        console.log(`
+        ============================================
+        Página de Amor para Lorena - Por Vini
+        ============================================
+        Otimizado para mobile • Totalmente editável
+        Fotos: ${siteData.photos.length}
+        Momentos: ${siteData.timelineEvents.length}
+        Perguntas: ${siteData.quiz.questions.length}
+        Elogios: ${siteData.compliments.length}
+        ============================================
+        Página carregada com sucesso! 💖
+        `);
+    </script>
+</body>
+</html>
